@@ -8,7 +8,7 @@ mydb = mysql.connector.connect(
   user="root", 
   password="",
   use_pure=True
-)
+) """
 
 print("Tervetuloa \n\n1) Kirjaudu sisään\n\n2) Luo käyttäjä\n")
 valinta = input()

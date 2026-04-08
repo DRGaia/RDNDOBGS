@@ -1,94 +1,47 @@
--- Create tables
+CREATE DATABASE IF NOT EXISTS kirjasto; 
+USE kirjasto; 
 
-CREATE TABLE IF NOT EXISTS kirjat (
-    nimi TEXT,
-    kirjoittaja TEXT,
-    julkaisuvuosi INTEGER,
-    ISBN TEXT
-);
+CREATE TABLE IF NOT EXISTS kirjat ( 
+nimi VARCHAR(255), 
+kirjoittaja VARCHAR(255), 
+julkaisuvuosi INT, 
+ISBN VARCHAR(13) PRIMARY KEY 
+); 
 
-<<<<<<< HEAD
-CREATE TABLE IF NOT EXISTS asiakkaat (
-    nimi TEXT,
-    syntymävuosi INTEGER,
-    sähköpostiosoite TEXT,
-    sakkosaldo INTEGER
-);
+CREATE TABLE IF NOT EXISTS asiakkaat ( 
+id INT AUTO_INCREMENT PRIMARY KEY, 
+nimi VARCHAR(255), 
+syntymävuosi INT, 
+sähköpostiosoite VARCHAR(255), 
+sakkosaldo INT 
+); 
 
-CREATE TABLE IF NOT EXISTS admin (
-    nimi TEXT,
-    sähköpostiosoite TEXT,
-    salasana TEXT
-);
+CREATE TABLE IF NOT EXISTS admin ( 
+id INT AUTO_INCREMENT PRIMARY KEY, 
+nimi VARCHAR(255), 
+sähköpostiosoite VARCHAR(255), 
+salasana VARCHAR(255) 
+); 
 
--- Insert books
+INSERT INTO kirjat (nimi, kirjoittaja, julkaisuvuosi, ISBN) VALUES 
+    ('A Game of Thrones', 'George R. R. Martin', 1996, '9780553103540'), 
+    ('A Clash of Kings', 'George R. R Martin', 1998, '9780553108033'), 
+    ('Carrie', 'Stephen King', 1974, '9780307743664'), 
+    ('The Shining', 'Stephen King', 1977, '9780307743657'), 
+    ('The Stand', 'Stephen King', 1978, '9780307743688'), 
+    ('It', 'Stephen King', 1986, '9781501142970'), 
+    ('Misery', 'Stephen King', 1987, '9781501143106'), 
+    ('Bloom into You Vol. 1', 'Nakatani Nio', 2017, '9781626923539'), 
+    ('The Last Wish Introducing the Witcher', 'Andrzej Sapkowski', 1993, '9780316452465'), 
+    ('Rascal Does Not Dream of Bunny Girl Senpai', 'Hajime Kamoshida', 2020, '9781975359621'); 
 
-INSERT INTO kirjat VALUES ('A Game of Thrones', 'George R. R. Martin', 1996, '9780553103540');
-INSERT INTO kirjat VALUES ('A Clash of Kings', 'George R. R Martin', 1998, '9780553108033');
-INSERT INTO kirjat VALUES ('Carrie', 'Stephen King', 1974, '9780307743664');
-INSERT INTO kirjat VALUES ('The Shining', 'Stephen King', 1977, '9780307743657');
-INSERT INTO kirjat VALUES ('The Stand', 'Stephen King', 1978, '9780307743688');
-INSERT INTO kirjat VALUES ('It', 'Stephen King', 1986, '9781501142970');
-INSERT INTO kirjat VALUES ('Misery', 'Stephen King', 1987, '9781501143106');
-INSERT INTO kirjat VALUES ('Bloom into You Vol. 1', 'Nakatani Nio', 2017, '9781626923539');
-INSERT INTO kirjat VALUES ('The Last Wish Introducing the Witcher', 'Andrzej Sapkowski', 1993, '9780316452465');
-INSERT INTO kirjat VALUES ('Rascal Does Not Dream of Bunny Girl Senpai', 'Hajime Kamoshida', 2020, '9781975359621');
+INSERT INTO asiakkaat (nimi, syntymävuosi, sähköpostiosoite, sakkosaldo) VALUES 
+    ('Daniel Rittinghaus', 2008, 'drg@gmail.com', 0), 
+    ('Olavi Laakkonen', 2008, 'ol@gmail.com', 0), 
+    ('Matti Ohra', 2001, 'matti@gmail.com', 5), 
+    ('Maija Raahe', 2003, 'raahe@gmail.com', 0), 
+    ('Ilari Srael', 1002, 'illi@gmail.com', 530); 
 
--- Insert customers
-
-INSERT INTO asiakkaat VALUES ('Daniel Rittinghaus', 2008, 'drg@gmail.com', 0);
-INSERT INTO asiakkaat VALUES ('Olavi Laakkonen', 2008, 'ol@gmail.com', 0);
-INSERT INTO asiakkaat VALUES ('Matti Ohra', 2001, 'matti@gmail.com', 5);
-INSERT INTO asiakkaat VALUES ('Maija Raahe', 2003, 'raahe@gmail.com', 0);
-INSERT INTO asiakkaat VALUES ('Ilari Srael', 1002, 'illi@gmail.com', 530);
-
--- Insert admins
-=======
-CREATE TABLE asiakkaat (
-    nimi varchar(255),
-    syntymävuosi int(11),
-    sähköpostiosoite varchar(255),
-    sakkosaldo int(13)
-);
-
-CREATE TABLE admin (
-    nimi varchar(255),
-    sähköpostiosoite varchar(255),
-    salasana varchar(255)
-);
-
-INSERT INTO kirjat
-VALUES ('nimi', 'kirjoittaja', julkaisuvuosi, 'ISBN');
-
-                Nää on kirjasto.db tiedostossa (jokanen kerran)
-
-INSERT INTO kirjat VALUES ('A Game of Thrones', 'George R. R. Martin', 1996, '9780553103540');
-INSERT INTO kirjat VALUES ('A Clash of Kings', 'George R. R Martin', 1998, '9780553108033');
-INSERT INTO kirjat VALUES ('Carrie', 'Stephen King', 1974, '9780307743664');
-INSERT INTO kirjat VALUES ('The Shining', 'Stephen King', 1977, '9780307743657');
-INSERT INTO kirjat VALUES ('The Stand', 'Stephen King', 1978, '9780307743688');
-INSERT INTO kirjat VALUES ('It', 'Stephen King', 1986, '9781501142970');
-INSERT INTO kirjat VALUES ('Misery', 'Stephen King', 1987, '9781501143106');
-INSERT INTO kirjat VALUES ('Bloom into You Vol. 1', 'Nakatani Nio', 2017, '9781626923539');
-INSERT INTO kirjat VALUES ('The Last Wish Introducing the Witcher', 'Andrzej Sapkowski', 1993, '9780316452465');
-INSERT INTO kirjat VALUES ('Rascal Does Not Dream of Bunny Girl Senpai', 'Hajime Kamoshida', 2020, '9781975359621');
-
-INSERT INTO asiakkaat
-VALUES ('nimi', syntymävuosi, 'sähköpostiosoite', 'sakkosaldo');
-
-                Nää on kirjasto.db tiedostossa (jokanen kerran)
-
-INSERT INTO asiakkaat VALUES ('Daniel Rittinghaus', 2008, 'drg@gmail.com', '0');
-INSERT INTO asiakkaat VALUES ('Olavi Laakkonen', 2008, 'ol@gmail.com', '0');
-INSERT INTO asiakkaat VALUES ('Matti Ohra', 2001, 'matti@gmail.com', '5');
-INSERT INTO asiakkaat VALUES ('Maija Raahe', 2003, 'raahe@gmail.com', '0');
-INSERT INTO asiakkaat VALUES ('Ilari Srael', 1002, 'illi@gmail.com', '530');
-
-INSERT INTO admin
-VALUES ('nimi', 'sähköpostiosoite', 'salasana');
-
-                Nää on kirjasto.db tiedostossa (jokanen kerran)
->>>>>>> 55ff281bfa8bdc8995082ce1354e06e7c96d1cba
-
-INSERT INTO admin VALUES ('Justus Jokinen', 'jusse@gmail.com', 'salasana123');
-INSERT INTO admin VALUES ('Axel Kuisma', 'axel@gmail.com', 'qwerty');
+INSERT INTO admin (nimi, sähköpostiosoite, salasana) VALUES 
+    ('Justus Jokinen', 'jusse@gmail.com', 'salasana123'), 
+    ('Axel Kuisma', 'axel@gmail.com', 'qwerty'); 
