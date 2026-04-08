@@ -1,3 +1,4 @@
+import sqlite3
 import mysql.connector
 from tabulate import tabulate
 
@@ -8,4 +9,7 @@ mydb = mysql.connector.connect(
   password="",
   use_pure=True
 )
+
+conn = sqlite3.connect('./Kirjasto.db')
+cur = conn.cursor()
 
