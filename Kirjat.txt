@@ -1,10 +1,10 @@
-A Game of Thrones, George R. R. Martin, 1996, 978-0553103540
-A Clash of Kings, George R. R Martin, 1998, 978-0553108033
-Carrie, Stephen King, 1974, 978-0307743664
-The Shining, Stephen King, 1977, 978-0307743657
-The Stand, Stephen King, 1978, 978-0307743688
-It, Stephen King, 1986, 978-1501142970
-Misery, Stephen King, 1987, 978-1501143106
+A Game of Thrones, George R. R. Martin, 1996, 9780553103540
+A Clash of Kings, George R. R Martin, 1998, 9780553108033
+Carrie, Stephen King, 1974, 9780307743664
+The Shining, Stephen King, 1977, 9780307743657
+The Stand, Stephen King, 1978, 9780307743688
+It, Stephen King, 1986, 9781501142970
+Misery, Stephen King, 1987, 9781501143106
 Bloom into You Vol. 1, Nakatani Nio, 2017, 9781626923539
 The Last Wish Introducing the Witcher, Andrzej Sapkowski, 1993, 9780316452465
 Rascal Does Not Dream of Bunny Girl Senpai, Hajime Kamoshida, 2020, 9781975359621
