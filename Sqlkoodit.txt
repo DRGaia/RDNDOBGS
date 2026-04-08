@@ -1,0 +1,29 @@
+CREATE DATABASE kirjasto;
+
+CREATE TABLE kirjat (
+    nimi varchar(255),
+    kirjoittaja varchar(255),
+    julkaisuvuosi int(11),
+    ISBN int(13)
+);
+
+CREATE TABLE asiakkaat (
+    nimi varchar(255),
+    syntymävuosi int(11),
+    sähköpostiosoite varchar(255),
+    ISBN int(13)
+);
+
+CREATE TABLE admin (
+    nimi varchar(255),
+    sähköpostiosoite varchar(255),
+);
+
+INSERT INTO kirjat
+VALUES ('nimi', 'kirjoittaja', 'julkaisuvuosi', 'ISBN');
+
+INSERT INTO asiakkaat
+VALUES ('nimi', 'syntymävuosi', 'sähköpostiosoite', 'ISBN');
+
+INSERT INTO admin
+VALUES ('nimi', 'sähköpostiosoite');
