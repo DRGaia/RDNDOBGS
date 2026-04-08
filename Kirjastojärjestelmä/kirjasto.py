@@ -1,4 +1,4 @@
-import sqlite3
+"""import sqlite3
 import mysql.connector
 from tabulate import tabulate
 
@@ -8,7 +8,7 @@ mydb = mysql.connector.connect(
   user="root", 
   password="",
   use_pure=True
-)
+) """
 
 print("Tervetuloa \n\n1) Kirjaudu sisään\n\n2) Luo käyttäjä\n")
 valinta = input()
@@ -27,6 +27,6 @@ try:
     pass
 except:
   pass
-conn = sqlite3.connect('./Kirjasto.db')
-cur = conn.cursor()
+#conn = sqlite3.connect('./Kirjasto.db')
+#cur = conn.cursor()
 
