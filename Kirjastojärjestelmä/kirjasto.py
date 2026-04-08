@@ -1,3 +1,4 @@
+import sqlite3
 import mysql.connector
 from tabulate import tabulate
 
@@ -26,3 +27,6 @@ try:
     pass
 except:
   pass
+conn = sqlite3.connect('./Kirjasto.db')
+cur = conn.cursor()
+
