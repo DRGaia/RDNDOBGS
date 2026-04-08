@@ -16,11 +16,24 @@ CREATE TABLE asiakkaat (
 
 CREATE TABLE admin (
     nimi varchar(255),
-    sähköpostiosoite varchar(255),
+    sähköpostiosoite varchar(255)
 );
 
 INSERT INTO kirjat
 VALUES ('nimi', 'kirjoittaja', 'julkaisuvuosi', 'ISBN');
+
+                Nää on kirjasto.db tiedostossa (jokanen kerran)
+
+INSERT INTO kirjat VALUES ('A Game of Thrones', 'George R. R. Martin', 1996, '9780553103540');
+INSERT INTO kirjat VALUES ('A Clash of Kings', 'George R. R Martin', 1998, '9780553108033');
+INSERT INTO kirjat VALUES ('Carrie', 'Stephen King', 1974, '9780307743664');
+INSERT INTO kirjat VALUES ('The Shining', 'Stephen King', 1977, '9780307743657');
+INSERT INTO kirjat VALUES ('The Stand', 'Stephen King', 1978, '9780307743688');
+INSERT INTO kirjat VALUES ('It', 'Stephen King', 1986, '9781501142970');
+INSERT INTO kirjat VALUES ('Misery', 'Stephen King', 1987, '9781501143106');
+INSERT INTO kirjat VALUES ('Bloom into You Vol. 1', 'Nakatani Nio', 2017, '9781626923539');
+INSERT INTO kirjat VALUES ('The Last Wish Introducing the Witcher', 'Andrzej Sapkowski', 1993, '9780316452465');
+INSERT INTO kirjat VALUES ('Rascal Does Not Dream of Bunny Girl Senpai', 'Hajime Kamoshida', 2020, '9781975359621');
 
 INSERT INTO asiakkaat
 VALUES ('nimi', 'syntymävuosi', 'sähköpostiosoite', 'ISBN');
