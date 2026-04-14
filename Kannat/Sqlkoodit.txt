@@ -2,14 +2,15 @@ CREATE DATABASE IF NOT EXISTS kirjasto;
 USE kirjasto; 
 
 CREATE TABLE IF NOT EXISTS kirjat ( 
+id INTEGER PRIMARY KEY AUTOINCREMENT, 
 nimi VARCHAR(255), 
 kirjoittaja VARCHAR(255), 
 julkaisuvuosi INT, 
-ISBN VARCHAR(13) PRIMARY KEY 
+ISBN VARCHAR(13) 
 ); 
 
 CREATE TABLE IF NOT EXISTS asiakkaat ( 
-id INT AUTO_INCREMENT PRIMARY KEY, 
+id INTEGER PRIMARY KEY AUTOINCREMENT, 
 nimi VARCHAR(255), 
 syntymävuosi INT, 
 sähköpostiosoite VARCHAR(255), 
@@ -17,7 +18,7 @@ sakkosaldo INT
 ); 
 
 CREATE TABLE IF NOT EXISTS admin ( 
-id INT AUTO_INCREMENT PRIMARY KEY, 
+id INTEGER PRIMARY KEY AUTOINCREMENT, 
 nimi VARCHAR(255), 
 sähköpostiosoite VARCHAR(255), 
 salasana VARCHAR(255) 
@@ -29,7 +30,7 @@ INSERT INTO kirjat (nimi, kirjoittaja, julkaisuvuosi, ISBN) VALUES
     ('Carrie', 'Stephen King', 1974, '9780307743664'), 
     ('The Shining', 'Stephen King', 1977, '9780307743657'), 
     ('The Stand', 'Stephen King', 1978, '9780307743688'), 
-    ('It', 'Stephen King', 1986, '9781501142970'), 
+    ('This Hoe Got Roaches In Her Crib', 'Quan Millz', '2021', '9798736151776'), 
     ('Misery', 'Stephen King', 1987, '9781501143106'), 
     ('Bloom into You Vol. 1', 'Nakatani Nio', 2017, '9781626923539'), 
     ('The Last Wish Introducing the Witcher', 'Andrzej Sapkowski', 1993, '9780316452465'), 
