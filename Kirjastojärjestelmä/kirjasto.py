@@ -2,13 +2,6 @@ import mysql.connector, sqlite3
 from tabulate import tabulate
 conn = sqlite3.connect('./Kannat/Kirjasto.db')
 cur = conn.cursor()
-mydb = mysql.connector.connect(
-  host="localhost",
-  port="3306",
-  user="root", 
-  password="",
-  use_pure=True
-)
 
 print("Tervetuloa \n\n1) Kirjaudu sisään\n\n2) Luo käyttäjä\n")
 valinta = input()
