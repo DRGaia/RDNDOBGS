@@ -14,7 +14,7 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
 nimi VARCHAR(255), 
 syntymävuosi INT, 
 sähköpostiosoite VARCHAR(255), 
-sakkosaldo INT,
+sakkosaldo INT DEFAULT 0,
 salasana VARCHAR(255) 
 ); 
 

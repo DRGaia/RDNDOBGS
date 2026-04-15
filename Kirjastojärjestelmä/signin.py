@@ -17,11 +17,11 @@ def signin():
 
                 print("")
 
-                lisasisaldo = int(input(f'Anna asiakkaan "{lisasinimi}" sakkosaldo: '))
+                lisasisala = input(f'Anna asiakkaan "{lisasinimi}" salasana: ')
 
                 print("")
 
-                cur.execute('INSERT INTO asiakkaat (nimi, syntymävuosi, sähköpostiosoite, sakkosaldo) VALUES (?, ?, ?, ?)', (lisasinimi, lisasivuos, lisasisähkö, lisasisaldo))
+                cur.execute('INSERT INTO asiakkaat (nimi, syntymävuosi, sähköpostiosoite, salasana) VALUES (?, ?, ?, ?)', (lisasinimi, lisasivuos, lisasisähkö, lisasisala))
                 cur.execute('SELECT * FROM asiakkaat')
                 data = cur.fetchall()
                 table = tabulate(data)
