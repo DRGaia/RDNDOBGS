@@ -1,5 +1,4 @@
-from Kirjastojärjestelmä import kirjautuminen, lisäys, poisto, haku, signin;
-
+from Kirjastojärjestelmä import kirjautuminen, lisäys, poisto, haku;
 while True:
     kirjautuminen.logsignin()
     admin = kirjautuminen.admin
