@@ -1,5 +1,6 @@
 import sqlite3
 from tabulate import tabulate
+from Kirjastojärjestelmä.signin import signin
 conn = sqlite3.connect('./Kannat/Kirjasto.db')
 cur = conn.cursor()
 admin = None
@@ -29,7 +30,7 @@ def logsignin():
           except:
             print("error")
 
-      if kumpi == "2":
+        elif kumpi == "2":
           try:
             email = input("Anna sähköpostiosoitteesi: ")
             salasana = input("Anna salasanasi: ")
@@ -42,6 +43,8 @@ def logsignin():
               print("Väärä salasana tai sähköposti")
           except:
             print("error")
+      elif valinta == "2":
+        signin()
     except:
       pass
   except:

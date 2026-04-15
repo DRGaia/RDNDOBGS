@@ -1,4 +1,4 @@
-from Kirjastojärjestelmä import kirjautuminen, lisäys, poisto, haku;
+from Kirjastojärjestelmä import kirjautuminen, lisäys, poisto, haku, signin;
 
 while True:
     kirjautuminen.logsignin()
@@ -14,4 +14,8 @@ while True:
                 poisto.poisto()
             elif mikä == "1":
                 haku.haku()
-        
+    elif asiakas == True:
+        print("\n1) Kirjan hakeminen\n")
+        mikä = input()
+        if mikä == "1":
+                haku.haku()
