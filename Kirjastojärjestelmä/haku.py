@@ -1,5 +1,4 @@
 import sqlite3
-import mysql.connector
 from tabulate import tabulate
 
 conn = sqlite3.connect('./Kannat/Kirjasto.db')
