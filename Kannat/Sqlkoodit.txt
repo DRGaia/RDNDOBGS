@@ -2,28 +2,37 @@ CREATE DATABASE IF NOT EXISTS kirjasto;
 USE kirjasto; 
 
 CREATE TABLE IF NOT EXISTS kirjat ( 
-id INTEGER PRIMARY KEY AUTOINCREMENT, 
-nimi VARCHAR(255), 
-kirjoittaja VARCHAR(255), 
-julkaisuvuosi INT, 
-kappalemäärä INT,
-ISBN VARCHAR(13) 
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    nimi VARCHAR(255), 
+    kirjoittaja VARCHAR(255), 
+    julkaisuvuosi INT, 
+    kappalemäärä INT,
+    ISBN VARCHAR(13) 
 ); 
 
 CREATE TABLE IF NOT EXISTS asiakkaat ( 
-id INTEGER PRIMARY KEY AUTOINCREMENT, 
-nimi VARCHAR(255), 
-syntymävuosi INT, 
-sähköpostiosoite VARCHAR(255), 
-sakkosaldo INT DEFAULT 0,
-salasana VARCHAR(255) 
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    nimi VARCHAR(255), 
+    syntymävuosi INT, 
+    sähköpostiosoite VARCHAR(255), 
+    sakkosaldo INT DEFAULT 0,
+    salasana VARCHAR(255) 
 ); 
 
+CREATE TABLE IF NOT EXISTS lainaukset ( 
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    asiakasid INT, 
+    kirjaid INT, 
+    pvm DATE DEFAULT (DATE('now')),
+    FOREIGN KEY (asiakasid) REFERENCES asiakkaat(id),
+    FOREIGN KEY (kirjaid) REFERENCES kirjat(id)
+);
+
 CREATE TABLE IF NOT EXISTS admin ( 
-id INTEGER PRIMARY KEY AUTOINCREMENT, 
-nimi VARCHAR(255), 
-sähköpostiosoite VARCHAR(255), 
-salasana VARCHAR(255) 
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    nimi VARCHAR(255), 
+    sähköpostiosoite VARCHAR(255), 
+    salasana VARCHAR(255) 
 ); 
 
 INSERT INTO kirjat (nimi, kirjoittaja, julkaisuvuosi, kappalemäärä, ISBN) VALUES 
