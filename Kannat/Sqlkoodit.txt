@@ -28,6 +28,15 @@ CREATE TABLE IF NOT EXISTS lainaukset (
     FOREIGN KEY (kirjaid) REFERENCES kirjat(id)
 );
 
+CREATE TABLE IF NOT EXISTS palautukset ( 
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    asiakasid INT, 
+    kirjaid INT, 
+    ppvm DATE DEFAULT (DATE('now')),
+    FOREIGN KEY (asiakasid) REFERENCES asiakkaat(id),
+    FOREIGN KEY (kirjaid) REFERENCES kirjat(id)
+);
+
 CREATE TABLE IF NOT EXISTS admin ( 
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
     nimi VARCHAR(255), 
