@@ -10,39 +10,39 @@ def logsignin():
   global asiakas
   admin = False
   asiakas = False
-  print("Tervetuloa \n\n1) Kirjaudu sisään\n\n2) Luo käyttäjä\n")
+  print("\nTervetuloa \n\n1) Kirjaudu sisään\n\n2) Luo käyttäjä\n")
   valinta = input()
   try:
     try:
       if valinta == "1":
-        kumpi = input("\nOletko:\n\n1) Admin.\n\n2) Asiakas.\n")
+        kumpi = input("\nOletko:\n\n1) Admin.\n\n2) Asiakas.\n\n")
         if kumpi == "1":
           try:
-            email = input("Anna sähköpostiosoitteesi: ")
-            salasana = input("Anna salasanasi: ")
+            email = input("\nAnna sähköpostiosoitteesi: \n")
+            salasana = input("\nAnna salasanasi: \n")
             cur.execute("SELECT nimi FROM admin WHERE sähköpostiosoite = ? AND salasana = ? LIMIT 1", (email, salasana))
             onko = cur.fetchone()
             if onko:
-              print(f"Tervetuloa {onko[0]}")
+              print(f"\nTervetuloa {onko[0]}")
               admin = True
             else:
-              print("Väärä salasana tai sähköposti")
+              print("\nVäärä salasana tai sähköposti")
           except:
-            print("error")
+            print("\nerror\n")
 
         elif kumpi == "2":
           try:
-            email = input("Anna sähköpostiosoitteesi: ")
-            salasana = input("Anna salasanasi: ")
+            email = input("\nAnna sähköpostiosoitteesi: \n")
+            salasana = input("\nAnna salasanasi: \n")
             cur.execute("SELECT nimi FROM asiakkaat WHERE sähköpostiosoite = ? AND salasana = ? LIMIT 1", (email, salasana))
             onko = cur.fetchone()
             if onko:
-              print(f"Tervetuloa {onko[0]}")
+              print(f"\nTervetuloa {onko[0]}\n")
               asiakas = True
             else:
-              print("Väärä salasana tai sähköposti")
+              print("\nVäärä salasana tai sähköposti")
           except:
-            print("error")
+            print("\nerror\n")
       elif valinta == "2":
         signin()
     except:
