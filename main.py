@@ -1,11 +1,11 @@
-from Kirjastojärjestelmä import kirjautuminen, lisäys, poisto, haku, lainaus;
+from Kirjastojärjestelmä import kirjautuminen, lisäys, poisto, haku, lainaus, aika;
 while True:
     kirjautuminen.logsignin()
     admin = kirjautuminen.admin
     asiakas = kirjautuminen.asiakas
     if admin == True:
         while True:
-            print("\n Mitä haluat tehdä? \n Admin: \n a1) Kirjan lisäys \n\n a2) Lainata kirjan \n\n a3) Kirjan poistaminen \n\n 1) Kirjan hakeminen \n")
+            print("\n Mitä haluat tehdä? \n Admin: \n a1) Kirjan lisäys \n\n a2) Lainata kirjan \n\n a3) Kirjan poistaminen \n\n a4) Myöhästymiset \n\n 1) Kirjan hakeminen \n")
             mikä = input()
             if mikä == "a1":
                 lisäys.lisäys()
@@ -13,6 +13,8 @@ while True:
                 lainaus.lainaus()
             elif mikä == "a3":
                 poisto.poisto()
+            elif mikä == "a4":
+                aika.aika()
             elif mikä == "1":
                 haku.haku()
     elif asiakas == True:
