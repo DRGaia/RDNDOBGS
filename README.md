@@ -10,10 +10,10 @@ Projektin on tarkoitus olla kirjastojärjestelmä, jossa pystys:
         Lainaamaan kirjan.
         Tarkistamaan omat tiedot.
         Muokkaamaan omia tietoja.
-        tarkistaa lainattuja kirjoja.
+        Tarkistaa lainattuja kirjoja.
         Saa muistutuksen palautuksesta 3 päivää ennen ja jos kirja on myöhässä.
 
-main.py [Kodin_selkäranka]:
+main.py [Koodin_selkäranka]:
 Kannat/
     kirjasto.db [Kanta]:
     kirjat.txt [Testi_kirjat]:

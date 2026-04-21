@@ -6,6 +6,7 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
 nimi VARCHAR(255), 
 kirjoittaja VARCHAR(255), 
 julkaisuvuosi INT, 
+kappalemäärä INT,
 ISBN VARCHAR(13) 
 ); 
 
@@ -25,17 +26,17 @@ sähköpostiosoite VARCHAR(255),
 salasana VARCHAR(255) 
 ); 
 
-INSERT INTO kirjat (nimi, kirjoittaja, julkaisuvuosi, ISBN) VALUES 
-    ('A Game of Thrones', 'George R. R. Martin', 1996, '9780553103540'), 
-    ('A Clash of Kings', 'George R. R Martin', 1998, '9780553108033'), 
-    ('Carrie', 'Stephen King', 1974, '9780307743664'), 
-    ('The Shining', 'Stephen King', 1977, '9780307743657'), 
-    ('The Stand', 'Stephen King', 1978, '9780307743688'), 
-    ('This Hoe Got Roaches In Her Crib', 'Quan Millz', '2021', '9798736151776'), 
-    ('Misery', 'Stephen King', 1987, '9781501143106'), 
-    ('Bloom into You Vol. 1', 'Nakatani Nio', 2017, '9781626923539'), 
-    ('The Last Wish Introducing the Witcher', 'Andrzej Sapkowski', 1993, '9780316452465'), 
-    ('Rascal Does Not Dream of Bunny Girl Senpai', 'Hajime Kamoshida', 2020, '9781975359621'); 
+INSERT INTO kirjat (nimi, kirjoittaja, julkaisuvuosi, kappalemäärä, ISBN) VALUES 
+    ('A Game of Thrones', 'George R. R. Martin', 1996, 5, '9780553103540'), 
+    ('A Clash of Kings', 'George R. R Martin', 1998, 2, '9780553108033'), 
+    ('Carrie', 'Stephen King', 1974, 1, '9780307743664'), 
+    ('The Shining', 'Stephen King', 1977, 0, '9780307743657'), 
+    ('The Stand', 'Stephen King', 1978, 3, '9780307743688'), 
+    ('This Hoe Got Roaches In Her Crib', 'Quan Millz', '2021', 0, '9798736151776'), 
+    ('Misery', 'Stephen King', 1987, 2, '9781501143106'), 
+    ('Bloom into You Vol. 1', 'Nakatani Nio', 2017, 3, '9781626923539'), 
+    ('The Last Wish Introducing the Witcher', 'Andrzej Sapkowski', 1993, 1, '9780316452465'), 
+    ('Rascal Does Not Dream of Bunny Girl Senpai', 'Hajime Kamoshida', 2020, 0, '9781975359621'); 
 
 INSERT INTO asiakkaat (nimi, syntymävuosi, sähköpostiosoite, sakkosaldo, salasana) VALUES 
     ('Daniel Rittinghaus', 2008, 'drg@gmail.com', 0, 'Yaoi911'), 
