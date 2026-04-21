@@ -1,6 +1,5 @@
 import sqlite3
 from tabulate import tabulate
-from datetime import datetime
 
 conn = sqlite3.connect('./Kannat/Kirjasto.db')
 cur = conn.cursor()
@@ -19,7 +18,6 @@ def aika():
         for row in Muistutus:
             print("Lähetä muistutus näille: ", row)
 
-    
     cur.execute("SELECT id, asiakasid, kirjaid, pvm FROM lainaukset WHERE DATE(pvm) < DATE('now', '-14 days')")
 
     vmyöhässä = cur.fetchone()
@@ -32,4 +30,3 @@ def aika():
 
         for row in Myöhässä:
             print("Myöhässä olevat lainaukset: ", row)
-        
