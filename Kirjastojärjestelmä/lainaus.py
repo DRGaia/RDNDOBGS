@@ -6,6 +6,9 @@ cur = conn.cursor()
 cur.execute("PRAGMA foreign_keys = ON")
 
 def lainaus():
+        
+        kirjat = []
+
         while True:
             print("")
 
@@ -38,8 +41,15 @@ def lainaus():
                 print("Kirja on loppu")
                 return
 
-            kirjat = []
-            kirjat.append(Lainakirja)
+            # Muokataan kappalemäärä
+            cur.execute('UPDATE kirjat SET kappalemäärä = kappalemäärä - 1 WHERE id = ? ', (Lainakirja,))
+
+            # Päivitetään kirjalistaa, jotta usea kirja voidaan lainata, mutta ei samaa kirjaa
+            if Lainakirja not in kirjat:
+                kirjat.append(Lainakirja)
+            else:
+                print("Kirja on jo valittu")
+                print("")
 
             lopetus = input("Lainaatko vielä (vastaa 'en' tai 'kyllä')? ")
 
@@ -52,7 +62,6 @@ def lainaus():
         print(table)
 
         print("")
-
 
         Lainaasiak = int(input("Kenelle haluat lainata kirjan (kirjoita asiakkaan id): "))
 
@@ -70,9 +79,6 @@ def lainaus():
         # Tallennetaan laina
         for x in kirjat:
             cur.execute('INSERT INTO lainaukset (kirjaid, asiakasid, pvm) VALUES (?, ?, DATE("now"))', (x, Lainaasiak))
-            # Muokataan kappalemäärä
-            cur.execute('UPDATE kirjat SET kappalemäärä = kappalemäärä - 1 WHERE id = ? ', (x,))
-        
 
         conn.commit()
 

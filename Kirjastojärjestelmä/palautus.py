@@ -9,15 +9,8 @@ def palautus():
 
         print("")
 
-        cur.execute("""
-        SELECT 
-            a.nimi AS asiakas,
-            GROUP_CONCAT(k.nimi, ', ') AS kirjat
-        FROM lainaukset l
-        JOIN asiakkaat a ON l.asiakasid = a.id
-        JOIN kirjat k ON l.kirjaid = k.id
-        GROUP BY a.id
-        """)
+        # Tulostetaan lainausten taulu selkeästi
+        cur.execute("SELECT l.id, a.nimi AS asiakas, k.nimi AS kirja, l.pvm FROM lainaukset l JOIN asiakkaat a ON l.asiakasid = a.id JOIN kirjat k ON l.kirjaid = k.id")
 
         data = cur.fetchall()
         headers = [desc[0] for desc in cur.description]
@@ -42,12 +35,18 @@ def palautus():
 
         # Lainausta jonka käyttäjä antoi ei löytynyt
         if result is None:
-            print("")
             print("Lainausta ei löytynyt")
+            print("")
             return
 
         # Poistetaan lainaus
         cur.execute('DELETE FROM lainaukset WHERE id = ? ', (Palatuskirja,))
+
+        # Otetaan oikea id, jotta oikean kirjan määrää voidaan lisätä
+        kirjaid = result[0]
+
+        # lisätään kappalemäärä palautettuun kirjaan
+        cur.execute('UPDATE kirjat SET kappalemäärä = kappalemäärä + 1 WHERE id = ?', (kirjaid,))
 
         conn.commit()
 
