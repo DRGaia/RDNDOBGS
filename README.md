@@ -10,10 +10,10 @@ Projektin on tarkoitus olla kirjastojärjestelmä, jossa pystys:
         Lainaamaan kirjan.
         Tarkistamaan omat tiedot.
         Muokkaamaan omia tietoja.
-        tarkistaa lainattuja kirjoja.
+        Tarkistaa lainattuja kirjoja.
         Saa muistutuksen palautuksesta 3 päivää ennen ja jos kirja on myöhässä.
 
-main.py [Kodin_selkäranka]:
+main.py [Koodin_selkäranka]:
 Kannat/
     kirjasto.db [Kanta]:
     kirjat.txt [Testi_kirjat]:
@@ -26,8 +26,8 @@ Kirjastojärjestelmä/
     signin.py [Uuden_käyttäjän_luominen]
 
 # Kirjoilla on nimi, kirjoittaja, julkaisuvuosi ja ISBN 
-- Yhdestä kirjasta voi olla useita kappaleita  
-- Kirjaa ei voi lainata, jos kaikki kappaleet ovat lainassa  
+# Yhdestä kirjasta voi olla useita kappaleita  
+# Kirjaa ei voi lainata, jos kaikki kappaleet ovat lainassa  
 # Asiakkaalla on nimi, syntymävuosi, sähköposti ja sakkosaldo
 - Asiakas voi lainata useita kirjoja
 - Lainan oletusaika on 14 päivää
@@ -37,23 +37,23 @@ Kirjastojärjestelmä/
   # lisätä ja poistaa kirjoja
   # hakea kirjoja nimen tai kirjoittajan perusteella
   # lisätä ja poistaa asiakkaita
-  - poistaa asiakkaan vain jos hänellä ei ole lainoja eikä sakkoja
+  # poistaa asiakkaan vain jos hänellä ei ole lainoja eikä sakkoja
   - tarkastella asiakkaan tietoja ja lainaushistoriaa
   - lisätä ja poistaa järjestelmänvalvojia
-  - lainata kirjoja asiakkaille ja merkitä palautuksia
+  # lainata kirjoja asiakkaille ja merkitä palautuksia
   - nollata asiakkaan sakot
 - Käyttäjä voi:
-  - tarkastella omia tietojaan
+  # tarkastella omia tietojaan
   - muokata nimeä ja sähköpostia
-  - tarkastella lainassa olevia kirjoja
+  # tarkastella lainassa olevia kirjoja
   # hakea kirjoja nimen ja kirjoittajan perusteella
 - Lainoissa näytetään:
-  - varoitus, jos palautukseen ≤ 3 päivää
-  - erillinen merkintä, jos kirja on myöhässä
+  # varoitus, jos palautukseen ≤ 3 päivää
+  # erillinen merkintä, jos kirja on myöhässä
 - Järjestelmässä tulee olla:
   # vähintään 10 kirjaa
   # vähintään 5 kirjailijaa
-  - vähintään 3 kirjaa useilla kappaleilla
+  # vähintään 3 kirjaa useilla kappaleilla
   # vähintään 5 asiakasta
   # vähintään 2 järjestelmänvalvojaa
   - osa asiakkaista joilla lainoja (myöhässäkin)

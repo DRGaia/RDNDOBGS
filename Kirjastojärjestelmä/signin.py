@@ -15,7 +15,7 @@ def signin():
 
                 lisasisähkö = input(f'Anna asiakkaan "{lisasinimi}" sähköposti: ')
 
-                print("")
+                print("") 
 
                 lisasisala = input(f'Anna asiakkaan "{lisasinimi}" salasana: ')
 

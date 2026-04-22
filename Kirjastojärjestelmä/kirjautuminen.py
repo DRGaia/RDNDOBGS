@@ -12,7 +12,7 @@ def logsignin():
   global käyt
   admin = False
   asiakas = False
-  print("Tervetuloa \n\n1) Kirjaudu sisään\n\n2) Luo käyttäjä\n")
+  print("\nTervetuloa \n\n1) Kirjaudu sisään\n\n2) Luo käyttäjä\n")
   valinta = input()
   try:
     try:
@@ -29,9 +29,9 @@ def logsignin():
               admin = True
               käyt = onko[0] # käytetään rakistus.py:ssä
             else:
-              print("Väärä salasana tai sähköposti")
+              print("\nVäärä salasana tai sähköposti")
           except:
-            print("error")
+            print("\nerror\n")
 
         elif kumpi == "2":
           try:
@@ -44,9 +44,9 @@ def logsignin():
               käyt = onko[0]
               asiakas = True
             else:
-              print("Väärä salasana tai sähköposti")
+              print("\nVäärä salasana tai sähköposti")
           except:
-            print("error")
+            print("\nerror\n")
       elif valinta == "2":
         signin()
     except:

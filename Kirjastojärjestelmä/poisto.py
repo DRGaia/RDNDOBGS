@@ -15,12 +15,20 @@ def poisto():
                 print("")
                 poistoid = input('Anna poistettavan asiakkaan sähköpostiosoite: ')
                 print("")
-                cur.execute('DELETE FROM asiakkaat WHERE sähköpostiosoite = ?', (poistoid,))
-                conn.commit()
-                cur.execute('SELECT * FROM asiakkaat')
-                data = cur.fetchall()
-                table = tabulate(data)
-                print(table)
+                cur.execute("SELECT sakkosaldo FROM asiakkaat WHERE sähköpostiosoite = ?", (poistoid,))
+                sak = cur.fetchone()
+
+                if sak[0] > 0:
+                    print("et voi poistaa käyttäjää joilla on sakkoja maksamatta")
+                elif sak is None:
+                        print("asiakasta ei löytynyt")
+                else:
+                    cur.execute('DELETE FROM asiakkaat WHERE sähköpostiosoite = ?', (poistoid,))
+                    conn.commit()
+                    cur.execute('SELECT * FROM asiakkaat')
+                    data = cur.fetchall()
+                    table = tabulate(data)
+                    print(table)
 
     elif poistovalinta == "k":
                 print("")
