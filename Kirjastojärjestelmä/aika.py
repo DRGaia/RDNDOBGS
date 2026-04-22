@@ -5,35 +5,24 @@ conn = sqlite3.connect('./Kannat/Kirjasto.db')
 cur = conn.cursor()
 def aika():
 
+    # Tarkistetaan onko jokin lainaus lähellä myöhästymistä
     cur.execute("SELECT id, asiakasid, kirjaid, pvm FROM lainaukset WHERE DATE(pvm) < DATE('now', '-11 days')")
 
-    vmuistutus = cur.fetchone()
+    muistutus = cur.fetchall()
 
-    if vmuistutus is None:
-        print("")
-        print("Kenelläkään ei ole palautusaika umpeutumassa")
-        print("")
-
+    if not muistutus:
+        print("\nKenelläkään ei ole palautusaika umpeutumassa\n")
     else:
-        Muistutus = cur.fetchall()
+        for row in muistutus:
+            print("\nLähetä muistutus näille:", row)
 
-        for row in Muistutus:
-            print("")
-            print("Lähetä muistutus näille: ", row)
-            print("")
-
+    # Tarkistetaan onko jokin lainaus myöhässä
     cur.execute("SELECT id, asiakasid, kirjaid, pvm FROM lainaukset WHERE DATE(pvm) < DATE('now', '-14 days')")
 
-    vmyöhässä = cur.fetchone()
-    if vmyöhässä is None:
-        print("")
-        print("Kenelläkään ei ole myöhässä palautuksia")
-        print("")
+    myohassa = cur.fetchall()
+
+    if not myohassa:
+        print("\nKenelläkään ei ole myöhässä palautuksia\n")
     else:
-
-        Myöhässä = cur.fetchall()
-
-        for row in Myöhässä:
-            print("")
-            print("Myöhässä olevat lainaukset: ", row)
-            print("")
+        for row in myohassa:
+            print("\nMyöhässä olevat lainaukset:", row)
