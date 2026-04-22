@@ -65,11 +65,4 @@ INSERT INTO asiakkaat (nimi, syntymävuosi, sähköpostiosoite, sakkosaldo, sala
 
 INSERT INTO admin (nimi, sähköpostiosoite, salasana) VALUES 
     ('Justus Jokinen', 'jusse@gmail.com', 'salasana123'), 
-    ('Axel Kuisma', 'axel@gmail.com', 'qwerty'); 
-
-
-
-
-INSERT INTO asiakkaat (nimi, syntymävuosi, sähköpostiosoite, sakkosaldo, salasana) VALUES 
-    ('Matti Ohra', 2001, 'matti@gmail.com', 5, 'qwerty123'), 
-    ('Ilari Srael', 1002, 'illi@gmail.com', 530, 'BenjaminMyBeloved'); 
+    ('Axel Kuisma', 'axel@gmail.com', 'qwerty');
