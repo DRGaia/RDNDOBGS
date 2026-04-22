@@ -52,4 +52,4 @@ def palautus():
 
         print("")
         print("Palautus onnistui!")
-        print("")
+
