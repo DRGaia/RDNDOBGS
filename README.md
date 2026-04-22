@@ -26,8 +26,8 @@ Kirjastojärjestelmä/
     signin.py [Uuden_käyttäjän_luominen]
 
 # Kirjoilla on nimi, kirjoittaja, julkaisuvuosi ja ISBN 
-- Yhdestä kirjasta voi olla useita kappaleita  
-- Kirjaa ei voi lainata, jos kaikki kappaleet ovat lainassa  
+# Yhdestä kirjasta voi olla useita kappaleita  
+# Kirjaa ei voi lainata, jos kaikki kappaleet ovat lainassa  
 # Asiakkaalla on nimi, syntymävuosi, sähköposti ja sakkosaldo
 - Asiakas voi lainata useita kirjoja
 - Lainan oletusaika on 14 päivää
