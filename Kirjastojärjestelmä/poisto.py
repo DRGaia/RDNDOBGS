@@ -19,7 +19,7 @@ def poisto():
                 sak = cur.fetchone()
 
                 if sak[0] > 0:
-                    print("et voi poistaa käyttäjää joilla on sakkoja maksamatta")
+                    print("et voi poistaa käyttäjää joilla on sakkoja maksamatta\n")
                 elif sak is None:
                         print("asiakasta ei löytynyt")
                 else:
@@ -46,5 +46,31 @@ def poisto():
                 table = tabulate(data)
                 print(table)
 
+    elif poistovalinta == "ad":
+        print("")
+        cur.execute('SELECT * FROM asiakkaat')
+        data = cur.fetchall()
+        table = tabulate(data)
+        print(table)
+        print("")
+        poistoid = input('Anna poistettavan asiakkaan sähköpostiosoite: ')
+        print("")
+        cur.execute("SELECT sakkosaldo FROM asiakkaat WHERE sähköpostiosoite = ?", (poistoid,))
+        sak = cur.fetchone()
+
+        if sak[0] > 0:
+            print("et voi poistaa käyttäjää joilla on sakkoja maksamatta\n")
+        elif sak is None:
+                print("asiakasta ei löytynyt")
+        else:
+            cur.execute('DELETE FROM asiakkaat WHERE sähköpostiosoite = ?', (poistoid,))
+            conn.commit()
+            cur.execute('SELECT * FROM asiakkaat')
+            data = cur.fetchall()
+            table = tabulate(data)
+            print(table)
+
     else:
                 print("Kirjoita joko a tai k! ")
+
+    
