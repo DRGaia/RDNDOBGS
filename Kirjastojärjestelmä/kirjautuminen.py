@@ -23,7 +23,7 @@ def logsignin():
             cur.execute("SELECT nimi FROM admin WHERE sähköpostiosoite = ? AND salasana = ? LIMIT 1", (email, salasana))
             onko = cur.fetchone()
             if onko:
-              print(f"\nTervetuloa {onko[0]}")
+              print(f"\nTervetuloa {onko[0]}\n")
               admin = True
             else:
               print("\nVäärä salasana tai sähköposti")
