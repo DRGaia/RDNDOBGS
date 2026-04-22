@@ -18,7 +18,7 @@ while True:
                 tarkistus.tarkistus(admin,asiakas,käyt)
     elif asiakas == True:
         while True:
-            print("\n1) Kirjan hakeminen\n2) Käyttäjätiedot\n")
+            print("\n1) Kirjan hakeminen\n\n2) Käyttäjätiedot\n")
             mikä = input()
             if mikä == "1":
                     haku.haku()
