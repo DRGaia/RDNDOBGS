@@ -23,6 +23,11 @@ def lainaus():
 
             print("")
 
+            # Päivitetään kirjalistaa, jotta usea kirja voidaan lainata, mutta ei samaa kirjaa
+            if Lainakirja in kirjat:
+                print("Kirja on jo valittu! ")
+                continue
+
             # Tarkistetaan kirjan kappalemäärä
             cur.execute('SELECT kappalemäärä FROM kirjat WHERE id = ?', (Lainakirja,))
             result = cur.fetchone()
@@ -32,24 +37,13 @@ def lainaus():
                 print("")
                 print("Kirjaa ei löytynyt")
                 return
-            
-            kappalemäärä = result[0]
 
-            # Kirja on loppu
-            if kappalemäärä <= 0:
-                print("")
+            # result = 0 tai vähemmän -> kirja on loppu
+            if result[0] <= 0:
                 print("Kirja on loppu")
-                return
+                continue
 
-            # Muokataan kappalemäärä
-            cur.execute('UPDATE kirjat SET kappalemäärä = kappalemäärä - 1 WHERE id = ? ', (Lainakirja,))
-
-            # Päivitetään kirjalistaa, jotta usea kirja voidaan lainata, mutta ei samaa kirjaa
-            if Lainakirja not in kirjat:
-                kirjat.append(Lainakirja)
-            else:
-                print("Kirja on jo valittu")
-                print("")
+            kirjat.append(Lainakirja)
 
             lopetus = input("Lainaatko vielä (vastaa 'en' tai 'kyllä')? ")
 
@@ -78,6 +72,7 @@ def lainaus():
         
         # Tallennetaan laina
         for x in kirjat:
+            cur.execute('UPDATE kirjat SET kappalemäärä = kappalemäärä - 1 WHERE id = ?', (x,))
             cur.execute('INSERT INTO lainaukset (kirjaid, asiakasid, pvm) VALUES (?, ?, DATE("now"))', (x, Lainaasiak))
 
         conn.commit()
