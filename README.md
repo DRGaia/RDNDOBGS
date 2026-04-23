@@ -56,7 +56,7 @@ Kirjastojärjestelmä/
   # vähintään 3 kirjaa useilla kappaleilla
   # vähintään 5 asiakasta
   # vähintään 2 järjestelmänvalvojaa
-  - osa asiakkaista joilla lainoja (myöhässäkin)
+  # osa asiakkaista joilla lainoja (myöhässäkin)
   # osa asiakkaista joilla sakkoja
 
 - Bonukset:
