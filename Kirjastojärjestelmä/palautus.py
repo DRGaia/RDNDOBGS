@@ -11,14 +11,15 @@ def palautus():
 
         # Tulostetaan lainausten taulu selkeästi
         cur.execute("SELECT l.id, a.nimi AS asiakas, k.nimi AS kirja, l.pvm FROM lainaukset l JOIN asiakkaat a ON l.asiakasid = a.id JOIN kirjat k ON l.kirjaid = k.id")
-
         data = cur.fetchall()
+
         headers = [desc[0] for desc in cur.description]
 
-        from tabulate import tabulate
-        print(tabulate(data, headers=headers, tablefmt="grid"))
+        print(tabulate(data, headers = headers, tablefmt="grid"))
 
+        # Jos taulu on tyhjä
         if not data:
+            print("")
             print("Tällä hetkellä ei lainauksia ")
             print("")
             return
@@ -41,8 +42,6 @@ def palautus():
         # Otetaan oikea id, jotta oikean kirjan määrää voidaan lisätä
         kirjaid = result[0]
 
-        print("kirjaid:", kirjaid)
-
         # Poistetaan lainaus
         cur.execute('DELETE FROM lainaukset WHERE id = ? ', (Palatuskirja,))
 
@@ -53,4 +52,5 @@ def palautus():
 
         print("")
         print("Palautus onnistui!")
+        print("")
 
