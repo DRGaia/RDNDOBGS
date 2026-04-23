@@ -72,6 +72,22 @@ def poisto():
         print("Admin poistettu onnistuneesti! ")
         print("")
 
+    elif poistovalinta == "ad":
+        print("")
+        cur.execute('SELECT * FROM admin')
+        data = cur.fetchall()
+        table = tabulate(data)
+        print(table)
+        print("")
+        poistoid = input('Anna poistettavan adminin sähköpostiosoite: ')
+        print("")
+        cur.execute('DELETE FROM admin WHERE sähköpostiosoite = ?', (poistoid,))
+        conn.commit()
+        cur.execute('SELECT * FROM admin')
+        data = cur.fetchall()
+        table = tabulate(data)
+        print(table)
+
     else:
         print("Kirjoita joko a tai k! ")
 

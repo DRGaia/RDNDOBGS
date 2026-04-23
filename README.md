@@ -44,7 +44,7 @@ Kirjastojärjestelmä/
   - nollata asiakkaan sakot
 - Käyttäjä voi:
   # tarkastella omia tietojaan
-  - muokata nimeä ja sähköpostia
+  # muokata nimeä ja sähköpostia
   # tarkastella lainassa olevia kirjoja
   # hakea kirjoja nimen ja kirjoittajan perusteella
 - Lainoissa näytetään:
