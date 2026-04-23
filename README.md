@@ -29,8 +29,8 @@ Kirjastojärjestelmä/
 # Yhdestä kirjasta voi olla useita kappaleita  
 # Kirjaa ei voi lainata, jos kaikki kappaleet ovat lainassa  
 # Asiakkaalla on nimi, syntymävuosi, sähköposti ja sakkosaldo
-- Asiakas voi lainata useita kirjoja
-- Lainan oletusaika on 14 päivää
+# Asiakas voi lainata useita kirjoja
+# Lainan oletusaika on 14 päivää
 - Uusia lainoja ei voi tehdä, jos asiakkaalla on myöhässä olevia lainoja tai maksamattomia sakkoja
 # Järjestelmänvalvojalla on nimi ja sähköposti ja kirjautuminen järjestelmään
 - Järjestelmänvalvoja voi:
@@ -39,7 +39,7 @@ Kirjastojärjestelmä/
   # lisätä ja poistaa asiakkaita
   # poistaa asiakkaan vain jos hänellä ei ole lainoja eikä sakkoja
   - tarkastella asiakkaan tietoja ja lainaushistoriaa
-  - lisätä ja poistaa järjestelmänvalvojia
+  # lisätä ja poistaa järjestelmänvalvojia
   # lainata kirjoja asiakkaille ja merkitä palautuksia
   - nollata asiakkaan sakot
 - Käyttäjä voi:

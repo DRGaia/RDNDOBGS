@@ -3,18 +3,21 @@ from tabulate import tabulate
 
 conn = sqlite3.connect('./Kannat/Kirjasto.db')
 cur = conn.cursor()
+
 def aika():
 
+    print("")
+
     # Tarkistetaan onko jokin lainaus lähellä myöhästymistä
-    cur.execute("SELECT id, asiakasid, kirjaid, pvm FROM lainaukset WHERE DATE(pvm) < DATE('now', '-11 days')")
+    cur.execute("SELECT id, asiakasid, kirjaid, pvm FROM lainaukset WHERE DATE(pvm) < DATE('now', '-11 days') AND DATE(pvm) >= DATE('now', '-14 days')")
 
     muistutus = cur.fetchall()
 
     if not muistutus:
-        print("\nKenelläkään ei ole palautusaika umpeutumassa\n")
+        print("Kenelläkään ei ole palautusaika umpeutumassa\n")
     else:
         for row in muistutus:
-            print("\nLähetä muistutus näille:", row)
+            print("Lähetä muistutus näille:", row, "\n")
 
     # Tarkistetaan onko jokin lainaus myöhässä
     cur.execute("SELECT id, asiakasid, kirjaid, pvm FROM lainaukset WHERE DATE(pvm) < DATE('now', '-14 days')")
@@ -22,7 +25,8 @@ def aika():
     myohassa = cur.fetchall()
 
     if not myohassa:
-        print("\nKenelläkään ei ole myöhässä palautuksia\n")
+        print("Kenelläkään ei ole myöhässä palautuksia\n")
     else:
         for row in myohassa:
-            print("\nMyöhässä olevat lainaukset:", row)
+            print("Myöhässä olevat lainaukset:", row, "\n")
+
