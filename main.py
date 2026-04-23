@@ -1,4 +1,4 @@
-from Kirjastojärjestelmä import kirjautuminen, lisäys, poisto, haku, tarkistus, lainaus, palautus, aika, sakko;
+from Kirjastojärjestelmä import kirjautuminen, lisäys, poisto, haku, tarkistus, lainaus, palautus, aika, sakko, muokkaus;
 
 while True:
     kirjautuminen.logsignin()
@@ -7,7 +7,7 @@ while True:
     käyt = kirjautuminen.käyt
     if admin == True:
         while True:
-            print("Mitä haluat tehdä (a = vain admineille)? \n\n a1) Kirjan lisäys \n\n a2) Kirjan lainaus \n\n a3) Kirjan palautus \n\n a4) Kirjan, asiakkaan tai adminin poistaminen \n\n a5) Myöhästysten tarkastelu \n\n a6) Sakkojen päivittäminen \n\n 1) Kirjan hakeminen  \n\n 2) Omien tietojen tarkastelu \n")
+            print("Mitä haluat tehdä (a = vain admineille)? \n\n a1) Kirjan lisäys \n\n a2) Kirjan lainaus \n\n a3) Kirjan palautus \n\n a4) Kirjan, asiakkaan tai adminin poistaminen \n\n a5) Myöhästysten tarkastelu \n\n a6) Sakkojen päivittäminen \n\n 1) Kirjan hakeminen  \n\n 2) Omien tietojen tarkastelu \n\n 3) Omien tietojen muokkaus \n")
             mikä = input()
             if mikä == "a1":
                 lisäys.lisäys()
@@ -25,13 +25,19 @@ while True:
                 haku.haku()
             elif mikä == "2":
                 tarkistus.tarkistus(admin,asiakas,käyt)
+            elif mikä == "3":
+                muokkaus.muokkaus(admin,asiakas,käyt)
+            else: 
+                print("\n Kirjoita mitä haluat tehdä (a1, a2, a3, a4, a5, a6, 1, 2 tai 3)")
     elif asiakas == True:
         while True:
-            print("\n1) Kirjan hakeminen\n\n2) Käyttäjätiedot\n")
+            print("\n 1) Kirjan hakeminen \n\n 2) Käyttäjätiedot \n\n 3) Omien tietojen muokkaus \n")
             mikä = input()
             if mikä == "1":
                     haku.haku()
             elif mikä == "2":
                 tarkistus.tarkistus(admin,asiakas,käyt)
+            elif mikä == "3":
+                muokkaus.muokkaus(admin,asiakas,käyt)
             else: 
                 print("\n Kirjoita mitä haluat tehdä (1, 2 tai 3)")

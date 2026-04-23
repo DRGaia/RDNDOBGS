@@ -25,7 +25,7 @@ def logsignin():
             cur.execute("SELECT id, nimi FROM admin WHERE sähköpostiosoite = ? AND salasana = ? LIMIT 1", (email, salasana)) # Varmistaa käyttäjän sähköpostin ja salasanan ja antaa takaisin id ja nimen
             onko = cur.fetchone()
             if onko:
-              print(f"\nTervetuloa {onko[1]}\n")
+              print(f"\nTervetuloa {onko[1]}")
               admin = True
               käyt = onko[0] # käytetään tarkistus.py:ssä
             else:
@@ -40,7 +40,7 @@ def logsignin():
             cur.execute("SELECT id, nimi FROM asiakkaat WHERE sähköpostiosoite = ? AND salasana = ? LIMIT 1", (email, salasana))
             onko = cur.fetchone()
             if onko:
-              print(f"\nTervetuloa {onko[1]}\n")
+              print(f"\nTervetuloa {onko[1]}")
               käyt = onko[0]
               asiakas = True
             else:
