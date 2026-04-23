@@ -7,7 +7,7 @@ while True:
     käyt = kirjautuminen.käyt
     if admin == True:
         while True:
-            print("Mitä haluat tehdä (a = vain admineille)? \n\n a1) Kirjan lisäys \n\n a2) Kirjan lainaus \n\n a3) Kirjan palautus \n\n a4) Kirjan, asiakkaan tai adminin poistaminen \n\n a5) Myöhästysten tarkastelu \n\n a6) Sakkojen päivittäminen \n\n 1) Kirjan hakeminen  \n\n 2) Omien tietojen tarkastelu \n\n 3) Omien tietojen muokkaus \n")
+            print("Mitä haluat tehdä (a = vain admineille)? \n\n a1) Kirjan lisäys \n\n a2) Kirjan lainaus \n\n a3) Kirjan palautus \n\n a4) Kirjan, asiakkaan tai adminin poistaminen \n\n a5) Myöhästysten tarkastelu \n\n a6) Sakkojen päivittäminen \n\n a7) Sakko saldon nollaus \n\n 1) Kirjan hakeminen  \n\n 2) Omien tietojen tarkastelu \n")
             mikä = input()
             if mikä == "a1":
                 lisäys.lisäys()
@@ -21,6 +21,8 @@ while True:
                 aika.aika()
             elif mikä == "a6":
                 sakko.sakko()
+            elif mikä == "a7":
+                sakko.sakonpoisto()
             elif mikä == "1":
                 haku.haku()
             elif mikä == "2":

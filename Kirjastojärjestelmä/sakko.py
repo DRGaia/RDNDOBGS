@@ -4,6 +4,24 @@ from tabulate import tabulate
 conn = sqlite3.connect('./Kannat/Kirjasto.db')
 cur = conn.cursor()
 
+def sakonpoisto():
+
+    cur.execute("SELECT id, sakkosaldo FROM asiakkaat WHERE sakkosaldo > 0")
+
+    nollattava = cur.fetchall()
+    tabnollattava = tabulate(nollattava)
+
+    print("\nID")
+
+    print(tabnollattava)
+
+    asid = input("\nvalitse nollattava asiakas listasta (id): ")
+
+    cur.execute("UPDATE asiakkaat SET sakkosaldo = ? WHERE id = ?", (0, asid))
+
+    conn.commit()
+
+    print("\nsakkosaldo nollattu\n")
 
 def sakko():
 
