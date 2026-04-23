@@ -9,7 +9,7 @@ def palautus():
 
         print("")
 
-        # Tulostetaan lainausten taulu selkeästi
+        # Tulostetaan lainausten taulu selkeästi (ei: 1, 2, 3, 2026-04-09)
         cur.execute("SELECT l.id, a.nimi AS asiakas, k.nimi AS kirja, l.pvm FROM lainaukset l JOIN asiakkaat a ON l.asiakasid = a.id JOIN kirjat k ON l.kirjaid = k.id")
         data = cur.fetchall()
 
