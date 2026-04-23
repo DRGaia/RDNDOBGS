@@ -22,12 +22,12 @@ def logsignin():
           try:
             email = input("\nAnna sähköpostiosoitteesi: \n")
             salasana = input("\nAnna salasanasi: \n")
-            cur.execute("SELECT id, nimi FROM admin WHERE sähköpostiosoite = ? AND salasana = ? LIMIT 1", (email, salasana)) #varmistaa käyttäjä sähköpostin ja salasanan ja antaa takas id ja nimen
+            cur.execute("SELECT id, nimi FROM admin WHERE sähköpostiosoite = ? AND salasana = ? LIMIT 1", (email, salasana)) # Varmistaa käyttäjän sähköpostin ja salasanan ja antaa takaisin id ja nimen
             onko = cur.fetchone()
             if onko:
               print(f"\nTervetuloa {onko[1]}\n")
               admin = True
-              käyt = onko[0] # käytetään rakistus.py:ssä
+              käyt = onko[0] # käytetään tarkistus.py:ssä
             else:
               print("\nVäärä salasana tai sähköposti")
           except:

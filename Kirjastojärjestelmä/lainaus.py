@@ -61,6 +61,21 @@ def lainaus():
 
         print("")
 
+        # Tarkistetaan onko asiakkaalla sakkoja
+        cur.execute('SELECT sakkosaldo FROM asiakkaat WHERE id = ?', (Lainaasiak,))
+        tulos = cur.fetchone()
+
+        # Muunnetaan fetchonen antama tuple (52,) kokonaisluvuksi 52
+        if tulos is not None:
+             sakkosaldo = tulos[0]
+        else:
+             sakkosaldo = 0
+
+        if sakkosaldo > 0:
+             print(f"Asiakkaalla on {sakkosaldo} € sakkoja, joten hänelle ei voi lainata kirjoja.")
+             print("")
+             return
+
         # Tarkistetaan asiakas
         cur.execute('SELECT id FROM asiakkaat WHERE id = ?', (Lainaasiak,))
         result = cur.fetchone()
@@ -73,7 +88,7 @@ def lainaus():
         # Tallennetaan laina
         for x in kirjat:
             cur.execute('UPDATE kirjat SET kappalemäärä = kappalemäärä - 1 WHERE id = ?', (x,))
-            cur.execute("INSERT INTO lainaukset (kirjaid, asiakasid, pvm) VALUES (?, ?, DATE('2026-04-01'))",(x, Lainaasiak))
+            cur.execute("INSERT INTO lainaukset (kirjaid, asiakasid, pvm) VALUES (?, ?, DATE('now'))",(x, Lainaasiak))
 
         conn.commit()
 
