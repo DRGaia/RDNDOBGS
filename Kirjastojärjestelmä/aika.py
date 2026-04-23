@@ -1,0 +1,32 @@
+import sqlite3
+from tabulate import tabulate
+
+conn = sqlite3.connect('./Kannat/Kirjasto.db')
+cur = conn.cursor()
+
+def aika():
+
+    print("")
+
+    # Tarkistetaan onko jokin lainaus lähellä myöhästymistä
+    cur.execute("SELECT id, asiakasid, kirjaid, pvm FROM lainaukset WHERE DATE(pvm) < DATE('now', '-11 days') AND DATE(pvm) >= DATE('now', '-14 days')")
+
+    muistutus = cur.fetchall()
+
+    if not muistutus:
+        print("Kenelläkään ei ole palautusaika umpeutumassa\n")
+    else:
+        for row in muistutus:
+            print("Lähetä muistutus näille:", row, "\n")
+
+    # Tarkistetaan onko jokin lainaus myöhässä
+    cur.execute("SELECT id, asiakasid, kirjaid, pvm FROM lainaukset WHERE DATE(pvm) < DATE('now', '-14 days')")
+
+    myohassa = cur.fetchall()
+
+    if not myohassa:
+        print("Kenelläkään ei ole myöhässä palautuksia\n")
+    else:
+        for row in myohassa:
+            print("Myöhässä olevat lainaukset:", row, "\n")
+
