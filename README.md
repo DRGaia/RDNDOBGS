@@ -41,7 +41,7 @@ Kirjastojärjestelmä/
   - tarkastella asiakkaan tietoja ja lainaushistoriaa
   # lisätä ja poistaa järjestelmänvalvojia
   # lainata kirjoja asiakkaille ja merkitä palautuksia
-  - nollata asiakkaan sakot
+  # nollata asiakkaan sakot
 - Käyttäjä voi:
   # tarkastella omia tietojaan
   # muokata nimeä ja sähköpostia
