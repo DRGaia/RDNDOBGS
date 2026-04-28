@@ -6,7 +6,7 @@ cur = conn.cursor()
 def haku():
     Ekirja = input("Mitä kirjaa etsit (kirjoita kirjan nimi tai kirjailija): ")
 
-    Tulokset = cur.execute("SELECT * FROM kirjat WHERE nimi LIKE ? OR kirjoittaja LIKE ?",('%' + Ekirja + '%', '%' + Ekirja + '%')).fetchall()
+    Tulokset = cur.execute("SELECT * FROM kirjat WHERE nimi LIKE ? OR kirjoittaja LIKE ?",(Ekirja + '%', '%' + Ekirja + '%')).fetchall()
 
     if not Tulokset:
         print("Kirjaa ei löytynyt.")
