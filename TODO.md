@@ -38,7 +38,7 @@ Kirjastojärjestelmä/
   # hakea kirjoja nimen tai kirjoittajan perusteella
   # lisätä ja poistaa asiakkaita
   # poistaa asiakkaan vain jos hänellä ei ole lainoja eikä sakkoja
-  - tarkastella asiakkaan tietoja ja lainaushistoriaa
+   tarkastella asiakkaan tietoja ja lainaushistoriaa
   # lisätä ja poistaa järjestelmänvalvojia
   # lainata kirjoja asiakkaille ja merkitä palautuksia
   # nollata asiakkaan sakot
