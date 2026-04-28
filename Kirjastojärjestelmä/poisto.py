@@ -3,11 +3,14 @@ from tabulate import tabulate
 
 conn = sqlite3.connect('./Kannat/Kirjasto.db')
 cur = conn.cursor()
+
 def poisto():
+
     print("")
     poistovalinta = input("Haluatko poistaa (k)irjan, (a)siakkaan vai (ad)minin: ").lower()
 
     if poistovalinta == "a":
+                
                 print("")
                 cur.execute('SELECT * FROM asiakkaat')
                 data = cur.fetchall()
@@ -23,6 +26,7 @@ def poisto():
                     print("Et voi poistaa käyttäjää jolla on maksamattomia sakkoja \n")
                 elif sak is None:
                         print("Asiakasta ei löytynyt")
+
                 else:
                     cur.execute('DELETE FROM asiakkaat WHERE id = ?', (poistoid,))
                     conn.commit()
@@ -35,6 +39,7 @@ def poisto():
                     print("")
 
     elif poistovalinta == "k":
+                
                 print("")
                 cur.execute('SELECT * FROM kirjat')
                 data = cur.fetchall()
@@ -54,6 +59,7 @@ def poisto():
                 print("")
 
     elif poistovalinta == "ad":
+
         print("")
         cur.execute('SELECT * FROM admin')
         data = cur.fetchall()
@@ -72,23 +78,5 @@ def poisto():
         print("Admin poistettu onnistuneesti! ")
         print("")
 
-    elif poistovalinta == "ad":
-        print("")
-        cur.execute('SELECT * FROM admin')
-        data = cur.fetchall()
-        table = tabulate(data)
-        print(table)
-        print("")
-        poistoid = input('Anna poistettavan adminin sähköpostiosoite: ')
-        print("")
-        cur.execute('DELETE FROM admin WHERE sähköpostiosoite = ?', (poistoid,))
-        conn.commit()
-        cur.execute('SELECT * FROM admin')
-        data = cur.fetchall()
-        table = tabulate(data)
-        print(table)
-
     else:
-        print("Kirjoita joko a tai k! ")
-
-    
+        print("Kirjoita joko k, a tai ad! ")
