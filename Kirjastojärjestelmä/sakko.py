@@ -21,7 +21,7 @@ def sakonpoisto():
 
     conn.commit()
 
-    print("\nsakkosaldo nollattu\n")
+    print("\nSakkosaldo nollattu\n")
 
 def sakko():
 
@@ -41,8 +41,8 @@ def sakko():
         if päivät > 0:
             sakko = int(päivät)
 
-            cur.execute("UPDATE asiakkaat SET sakkosaldo = sakkosaldo + ? WHERE id = ?", (sakko, asiakasid))
+            cur.execute("UPDATE asiakkaat SET sakkosaldo = ? WHERE id = ?", (sakko, asiakasid))
 
             conn.commit()
 
-            print("sakot päivitetty", sakko)
+            print("Sakot päivitetty", sakko, "\n")
