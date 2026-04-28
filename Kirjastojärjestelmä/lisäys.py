@@ -7,29 +7,41 @@ def lisäys():
     valinta = input("Haluatko lisätä (k)irjan vai (a)siakkaan: ").lower()
 
     if valinta == "k":
-                print("")
-                liskirnimi = input('Anna lisättävän kirjan nimi: ')
+                while True:
+                    print("")
+                    liskirnimi = input('Anna lisättävän kirjan nimi: ')
 
-                print("")
+                    print("")
 
-                liskirkirj = input(f'Anna kirjan "{liskirnimi}" kirjoittaja: ')
+                    liskirkirj = input(f'Anna kirjan "{liskirnimi}" kirjoittaja: ')
 
-                print("")
+                    print("")
+                    while True:
+                        liskirvuos = (input(f'Anna kirjan "{liskirnimi}" julkaisuvuosi: '))
+                        try:
+                            liskirvuos = int(liskirvuos)
+                            print("")
+                            break
+                        except:
+                            print("Pitää olla kokonaisluku.")
+                                
+                    while True:
+                        liskirisbn = input(f'Anna kirjan "{liskirnimi}" ISBN-13: ')
+                        if len(liskirisbn) == 13 and liskirisbn.isdigit():
+                            liskirisbn = int(liskirisbn)
+                            print("")
+                            break
+                        else:
+                            print("Pitää olla 13 numeroa pitkä")
+                           
 
-                liskirvuos = int(input(f'Anna kirjan "{liskirnimi}" julkaisuvuosi: '))
-
-                print("")
-
-                liskirisbn = int(input(f'Anna kirjan "{liskirnimi}" ISBN-13: '))
-
-                print("")
-
-                cur.execute('INSERT INTO kirjat (nimi, kirjoittaja, julkaisuvuosi, ISBN) VALUES (?, ?, ?, ?)', (liskirnimi, liskirkirj, liskirvuos, liskirisbn))
-                cur.execute('SELECT * FROM kirjat')
-                data = cur.fetchall()
-                table = tabulate(data)
-                conn.commit()
-                print(table)
+                    cur.execute('INSERT INTO kirjat (nimi, kirjoittaja, julkaisuvuosi, ISBN) VALUES (?, ?, ?, ?)', (liskirnimi, liskirkirj, liskirvuos, liskirisbn))
+                    cur.execute('SELECT * FROM kirjat')
+                    data = cur.fetchall()
+                    table = tabulate(data)
+                    conn.commit()
+                    print(table)
+                    break
 
     if valinta == "a":
                 print("")

@@ -15,10 +15,10 @@ def historia():
 
         asiakasvalinta = input("Kenen asiakkaan tiedot näytetään (anna id): ")
 
-        cur.execute("SELECT nimi, sähköpostiosoite, salasana FROM asiakkaat WHERE id = ? LIMIT 1", (asiakasvalinta,)) 
+        cur.execute("SELECT nimi, sähköpostiosoite, salasana, sakkosaldo FROM asiakkaat WHERE id = ? LIMIT 1", (asiakasvalinta,)) 
         tiedot = cur.fetchone()
 
-        print(f"\nTiedot:\nNimi: {tiedot[0]}\nSähköposti: {tiedot[1]}\nSalasana: {tiedot[2]}\n")
+        print(f"\nTiedot:\nNimi: {tiedot[0]}\nSähköposti: {tiedot[1]}\nSalasana: {tiedot[2]}\nSakkosaldo: {tiedot[3]}\n")
 
         # Tulostetaan taulu tietyn asiakkaan lainauksista järkevästi (ei: 1, 2, 3, 2026-04-09)
         cur.execute("SELECT l.id, a.nimi AS asiakas, k.nimi AS kirja, l.pvm FROM lainaukset l JOIN asiakkaat a ON l.asiakasid = a.id JOIN kirjat k ON l.kirjaid = k.id WHERE a.id = ?", (asiakasvalinta,))
