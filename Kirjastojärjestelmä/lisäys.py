@@ -4,11 +4,14 @@ from tabulate import tabulate
 conn = sqlite3.connect('./Kannat/Kirjasto.db')
 cur = conn.cursor()
 def lisäys():
+
+    print("")
     valinta = input("Haluatko lisätä (k)irjan vai (a)siakkaan: ").lower()
+    print("")
 
     if valinta == "k":
+                
                 while True:
-                    print("")
                     liskirnimi = input('Anna lisättävän kirjan nimi: ')
 
                     print("")
@@ -16,6 +19,8 @@ def lisäys():
                     liskirkirj = input(f'Anna kirjan "{liskirnimi}" kirjoittaja: ')
 
                     print("")
+
+                    # Tarkistetaan, että syöte on kokonaisluku
                     while True:
                         liskirvuos = (input(f'Anna kirjan "{liskirnimi}" julkaisuvuosi: '))
                         try:
@@ -24,7 +29,8 @@ def lisäys():
                             break
                         except:
                             print("Pitää olla kokonaisluku.")
-                                
+
+                    # Tarkistetaan, että syöte on kokonaisluku ja 13 numeroa pitkä     
                     while True:
                         liskirisbn = input(f'Anna kirjan "{liskirnimi}" ISBN-13: ')
                         if len(liskirisbn) == 13 and liskirisbn.isdigit():
@@ -33,18 +39,34 @@ def lisäys():
                             break
                         else:
                             print("Pitää olla 13 numeroa pitkä")
-                           
 
-                    cur.execute('INSERT INTO kirjat (nimi, kirjoittaja, julkaisuvuosi, ISBN) VALUES (?, ?, ?, ?)', (liskirnimi, liskirkirj, liskirvuos, liskirisbn))
+                    while True:
+                        liskirkirjmäärä = input(f'Kuinka monta kappaletta kirjaa "{liskirnimi}" lisätään: ')
+
+                        # Tarkistetaan, että syöte on kokonaisluku
+                        if liskirkirjmäärä.isdigit():
+                            liskirkirjmäärä = int(liskirkirjmäärä)
+                            
+                            # Tarkistetaan, että syöte on yli 0
+                            if liskirkirjmäärä > 0:
+                                print("")
+                                break
+                            else:
+                                print("Täytyy olla suurempi kuin 0.")
+                        else:
+                            print("Pitää olla kokonaisluku.")
+                    
+                    cur.execute('INSERT INTO kirjat (nimi, kirjoittaja, julkaisuvuosi, kappalemäärä, ISBN) VALUES (?, ?, ?, ?, ?)', (liskirnimi, liskirkirj, liskirvuos, liskirkirjmäärä, liskirisbn))
                     cur.execute('SELECT * FROM kirjat')
                     data = cur.fetchall()
                     table = tabulate(data)
                     conn.commit()
                     print(table)
+                    print("")
                     break
 
     if valinta == "a":
-                print("")
+
                 lisasinimi = input('Anna lisättävän asiakkaan nimi: ')
 
                 print("")
@@ -67,5 +89,6 @@ def lisäys():
                 table = tabulate(data)
                 conn.commit()
                 print(table)
+
     if valinta != "a" and valinta != "k":
                 print("Kirjoita k tai a! ")

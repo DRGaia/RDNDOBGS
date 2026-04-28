@@ -6,12 +6,10 @@ cur = conn.cursor()
 
 def sakonpoisto():
 
-    cur.execute("SELECT id, sakkosaldo FROM asiakkaat WHERE sakkosaldo > 0")
-
+    cur.execute("SELECT id, nimi, sakkosaldo FROM asiakkaat WHERE sakkosaldo > 0")
     nollattava = cur.fetchall()
-    tabnollattava = tabulate(nollattava)
 
-    print("\nID")
+    tabnollattava = tabulate(nollattava)
 
     print(tabnollattava)
 
