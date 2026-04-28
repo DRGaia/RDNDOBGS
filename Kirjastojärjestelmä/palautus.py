@@ -50,7 +50,6 @@ def palautus():
 
         conn.commit()
 
-        print("")
         print("Palautus onnistui!")
         print("")
 

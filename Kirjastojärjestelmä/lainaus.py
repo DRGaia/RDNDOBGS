@@ -88,10 +88,9 @@ def lainaus():
         # Tallennetaan laina
         for x in kirjat:
             cur.execute('UPDATE kirjat SET kappalemäärä = kappalemäärä - 1 WHERE id = ?', (x,))
-            cur.execute("INSERT INTO lainaukset (kirjaid, asiakasid, pvm) VALUES (?, ?, DATE('now'))",(x, Lainaasiak))
+            cur.execute("INSERT INTO lainaukset (kirjaid, asiakasid, pvm) VALUES (?, ?, DATE('2026-01-04'))",(x, Lainaasiak))
 
         conn.commit()
 
-        print("")
         print("Lainaus onnistui!")
         print("")
