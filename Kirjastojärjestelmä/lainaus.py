@@ -65,7 +65,7 @@ def lainaus():
         cur.execute('SELECT sakkosaldo FROM asiakkaat WHERE id = ?', (Lainaasiak,))
         tulos = cur.fetchone()
 
-        # Muunnetaan fetchonen antama tuple (52,) kokonaisluvuksi 52
+        # Muunnetaan fetchonen antama tuple (52,) kokonaisluvuksi 52 moi
         if tulos is not None:
              sakkosaldo = tulos[0]
         else:
