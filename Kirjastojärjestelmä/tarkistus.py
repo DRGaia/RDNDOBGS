@@ -14,3 +14,5 @@ def tarkistus(admin, asiakas, käyt):
         tiedot = cur.fetchone()
 
         print(f"\nTiedot:\nNimi: {tiedot[0]}\nSyntymävuosi: {tiedot[1]}\nSähköposti: {tiedot[2]}\nSalasana: {tiedot[4]}\nSakkosaldo: {tiedot[3]}€\n")
+    input("Paina Enter nappia jatkaaksesi.")
+# Antaa käyttäjä tiedot.
