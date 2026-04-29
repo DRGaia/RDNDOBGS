@@ -9,7 +9,7 @@ def poisto():
     print("")
     poistovalinta = input("Haluatko poistaa (k)irjan, (a)siakkaan vai (ad)minin: ").lower()
 
-    if poistovalinta == "a":
+    if poistovalinta == "a": #poistaa asiakkaan
                 
                 print("")
                 cur.execute('SELECT * FROM asiakkaat')
@@ -38,7 +38,7 @@ def poisto():
                     print("Asiakas poistettu onnistuneesti! ")
                     print("")
 
-    elif poistovalinta == "k":
+    elif poistovalinta == "k":#poistaa Kirjan
                 
                 print("")
                 cur.execute('SELECT * FROM kirjat')
@@ -58,7 +58,7 @@ def poisto():
                 print("Kirja poistettu onnistuneesti! ")
                 print("")
 
-    elif poistovalinta == "ad":
+    elif poistovalinta == "ad":#poistaa adminin
 
         print("")
         cur.execute('SELECT * FROM admin')
