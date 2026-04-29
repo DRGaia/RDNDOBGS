@@ -18,21 +18,48 @@ def historia():
         cur.execute("SELECT nimi, sähköpostiosoite, salasana, sakkosaldo FROM asiakkaat WHERE id = ? LIMIT 1", (asiakasvalinta,)) 
         tiedot = cur.fetchone()
 
-        print(f"\nTiedot:\nNimi: {tiedot[0]}\nSähköposti: {tiedot[1]}\nSalasana: {tiedot[2]}\nSakkosaldo: {tiedot[3]}\n")
+        print(f"\nTiedot:\nNimi: {tiedot[0]}\nSähköposti: {tiedot[1]}\nSalasana: {tiedot[2]}\nSakkosaldo: {tiedot[3]}")
 
-        # Tulostetaan taulu tietyn asiakkaan lainauksista järkevästi (ei: 1, 2, 3, 2026-04-09)
+        # Tulostetaan taulu tietyn asiakkaan lainauksista järkevästi (ei: 1 2 3 2026-04-09)     l = lainaukset taulu     a = asiakkaat taulu     k = kirjat taulu
         cur.execute("SELECT l.id, a.nimi AS asiakas, k.nimi AS kirja, l.pvm FROM lainaukset l JOIN asiakkaat a ON l.asiakasid = a.id JOIN kirjat k ON l.kirjaid = k.id WHERE a.id = ?", (asiakasvalinta,))
         data = cur.fetchall()
-
-        headers = [desc[0] for desc in cur.description]
-
-        print(tabulate(data, headers = headers, tablefmt="grid"))
-
-        print("")
 
         # Jos taulu on tyhjä
         if not data:
             print("")
-            print("Tällä hetkellä ei lainauksia ")
+            print(f"Käyttäjällä '{tiedot[0]}' ei ole tällä hetkellä lainauksia ")
             print("")
             return
+
+        else:
+            headers = [desc[0] for desc in cur.description]
+
+            print("")
+            print(f"Käyttäjän '{tiedot[0]}' lainaukset: ")
+            print("")
+
+            print(tabulate(data, headers = headers, tablefmt="grid"))
+
+            print("")
+        
+        # Tulostetaan taulu tietyn asiakkaan palautuksista järkevästi (ei: 1 1 1 2026-04-29)     p = palautukset taulu     a = asiakkaat taulu     k = kirjat taulu
+        cur.execute("SELECT p.id, a.nimi AS asiakas, k.nimi AS kirja, p.ppvm FROM palautukset p JOIN asiakkaat a ON p.asiakasid = a.id JOIN kirjat k ON p.kirjaid = k.id WHERE a.id = ?", (asiakasvalinta,))
+        data = cur.fetchall()
+
+        # Jos taulu on tyhjä
+        if not data:
+            print("")
+            print(f"Käyttäjällä '{tiedot[0]}' ei ole tällä hetkellä palautuksia ")
+            print("")
+            return
+
+        else:
+            headers = [desc[0] for desc in cur.description]
+
+            print(f"Käyttäjän '{tiedot[0]}' palautukset: ")
+            print("")
+
+            print(tabulate(data, headers = headers, tablefmt="grid"))
+
+            print("")
+

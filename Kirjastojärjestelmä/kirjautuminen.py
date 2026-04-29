@@ -7,7 +7,7 @@ admin = None
 asiakas = None
 käyt = None
 def logsignin():
-  global admin # nää on vaa ne jotka siirretään toisiin tiedostoihin kuten main
+  global admin # globaalit on ne, jotka siirretään toisiin tiedostoihin kuten main.py
   global asiakas
   global käyt
   admin = False
@@ -16,7 +16,7 @@ def logsignin():
   valinta = input()
   try:
     try:
-      if valinta == "1": # onko asiakas admin vai asiakas
+      if valinta == "1": # onko käyttäjä admin vai asiakas
         kumpi = input("\nOletko:\n\n1) Admin.\n\n2) Asiakas.\n\n")
         if kumpi == "1":
           try:
@@ -25,6 +25,7 @@ def logsignin():
             cur.execute("SELECT id, nimi FROM admin WHERE sähköpostiosoite = ? AND salasana = ? LIMIT 1", (email, salasana)) # Varmistaa käyttäjän sähköpostin ja salasanan ja antaa takaisin id ja nimen
             onko = cur.fetchone()
             if onko:
+              # id = onko[0]   nimi = onko[1]
               print(f"\nTervetuloa {onko[1]}\n")
               admin = True
               käyt = onko[0] # käytetään tarkistus.py:ssä
@@ -41,8 +42,8 @@ def logsignin():
             onko = cur.fetchone()
             if onko:
               print(f"\nTervetuloa {onko[1]}\n")
-              käyt = onko[0]
               asiakas = True
+              käyt = onko[0] # käytetään tarkistus.py:ssä
             else:
               print("\nVäärä salasana tai sähköposti")
           except:
