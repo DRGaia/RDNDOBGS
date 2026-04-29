@@ -27,3 +27,4 @@ def signin():
                 table = tabulate(data)
                 conn.commit()
                 print(table)
+# Luo käyttäjän ja käyttäjätiedot kuten nimen salasanan ja sähköpostin
