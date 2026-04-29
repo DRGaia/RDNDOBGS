@@ -38,7 +38,23 @@ def palautus():
             print("Lainausta ei löytynyt")
             print("")
             return
-        
+
+        # Otetaan tarvittavat tiedot lainauksesta
+        cur.execute('SELECT kirjaid FROM lainaukset WHERE id = ?', (Palatuskirja,))
+        kirja = cur.fetchone()
+        kirjaid = kirja[0]
+
+        cur.execute('SELECT asiakasid FROM lainaukset WHERE id = ?', (Palatuskirja,))
+        asiakas = cur.fetchone()
+        asiakasid = asiakas[0]
+
+        cur.execute('SELECT pvm FROM lainaukset WHERE id = ?', (Palatuskirja,))
+        pvm = cur.fetchone()
+        ppvm = pvm[0]
+
+        # Lisätään lainaus palautukset tauluun
+        cur.execute("INSERT INTO palautukset (kirjaid, asiakasid, ppvm) VALUES (?, ?, ?)",(kirjaid, asiakasid, ppvm))
+
         # Otetaan oikea id, jotta oikean kirjan määrää voidaan lisätä
         kirjaid = result[0]
 
