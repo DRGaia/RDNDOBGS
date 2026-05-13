@@ -1,5 +1,9 @@
 # Kirjastojärjestelmä.
 
+Tekijät Daniel R, Olavi L, Justus J. Tiev24P.
+
+---
+
 - main.py [Koodin_selkäranka]:  
 - Kannat/  
    - kirjasto.db [Kanta]:  
